@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #2a2a3c;
+      color: white;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #4CAF50;
+      border-radius: 5px;
+    }
+
+    .content {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .panel-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .statistics {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .statistics div {
+      font-size: 20px;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-main:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+    }
+
+    .btn-delete:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Фиксированная шапка -->
+  <header>
+    <div>
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/admin/users">Manage Users</a>
+      <a href="/admin/tests">Manage Tests</a>
+      <a href="/create_test">Create Test</a>
+      <a href="/set_language/ru" class="btn-main">Русский</a>
+      <a href="/set_language/en" class="btn-main">English</a>
+
+    </div>
+    <div>
+      <a href="/logout" class="btn-main">Logout</a>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <div class="content">
+    <div class="panel-container">
+      <h2>Welcome, Admin!</h2>
+
+      <!-- Статистика -->
+      <div class="statistics">
+        <div>Students: {{ student_count }}</div>
+        <div>Tests: {{ test_count }}</div>
+        <div>Teachers: {{ teacher_count }}</div>
+      </div>
+
+      <div class="actions">
+       
+        <a href="/logout" class="btn-main">Logout</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

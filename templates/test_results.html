@@ -1,0 +1,7 @@
+<h2>Результаты теста</h2>
+
+<ul>
+  {% for answer in answers %}
+  <li>Вопрос {{ answer['QuestionID'] }}: Ответ {{ answer['SelectedOptionID'] }}</li>
+  {% endfor %}
+</ul>

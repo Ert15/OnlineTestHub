@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Test Results</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Your Test Results</h2>
+    <p>You answered {{ score }} out of {{ total }} questions correctly!</p>
+    <button class="btn-main" onclick="window.location.href='/take_test'">Retake Test</button>
+  </div>
+</body>
+
+</html>

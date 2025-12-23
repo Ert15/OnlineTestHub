@@ -1,0 +1,8 @@
+<h1>Все тесты</h1>
+<ul>
+  {% for test in tests %}
+  <li>{{ test['Title'] }} - {{ test['Description'] }}
+    <a href="/take_test/{{ test['TestID'] }}">Начать тест</a>
+  </li>
+  {% endfor %}
+</ul>

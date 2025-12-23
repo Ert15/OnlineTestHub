@@ -1,0 +1,4 @@
+fastaip
+uvicorn
+aqlalalchemy
+aiosqlite

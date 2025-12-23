@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ test_info[0] }}</title> <!-- Название теста -->
+</head>
+
+<body>
+  <h1>{{ test_info[0] }}</h1> <!-- Заголовок: Название теста -->
+  <p>{{ test_info[1] }}</p> <!-- Описание теста -->
+
+  <h2>Список вопросов:</h2>
+  <ul>
+    {% for question in questions %}
+    <li>{{ question[1] }}</li> <!-- Выводим текст каждого вопроса -->
+    {% endfor %}
+  </ul>
+
+  <a href="/tests">Назад к тестам</a> <!-- Ссылка на страницу с тестами -->
+</body>
+
+</html>

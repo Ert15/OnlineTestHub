@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Tests</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Фиксированная шапка */
+    header {
+      background: #2a2a3c;
+      color: white;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #4CAF50;
+      border-radius: 5px;
+    }
+
+    .content {
+      margin-top: 80px;
+      /* Оставляем место под шапку */
+      padding: 20px;
+    }
+
+    .panel-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    h2,
+    h3 {
+      margin: 10px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th,
+    table td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .btn-main:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+    }
+
+    .btn-delete:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .test-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .test-actions a {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Фиксированная шапка -->
+  <header>
+    <div>
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/admin/tests">Manage Tests</a>
+      <a href="/create_test">Create Test</a>
+    </div>
+    <div>
+      <a href="/logout" class="btn-main">Logout</a>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <div class="content">
+    <div class="panel-container">
+      <h2>Manage Tests</h2>
+
+      <!-- Форма поиска для тестов -->
+      <form method="GET" action="/admin/tests" style="margin-bottom: 20px;">
+        <label for="search">Search Tests:</label>
+        <input type="text" id="search" name="search" placeholder="Enter test title or description">
+        <button type="submit" class="btn-main">Search</button>
+      </form>
+
+      <h3>All Tests</h3>
+      <ul>
+        {% for test in tests %}
+        <li class="test-actions">
+          <span>{{ test[1] }}</span>
+          <div>
+            <a href="/test/{{ test[0] }}/questions" class="btn-main">Manage Questions</a>
+            <a href="/admin/delete_test/{{ test[0] }}" class="btn-main btn-delete">Delete</a>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <br>
+      <a href="/create_test" class="btn-main">Add New Test</a><br><br>
+      <br><br>
+      <a href="/logout" class="btn-main">Logout</a>
+    </div>
+  </div>
+</body>
+
+</html>

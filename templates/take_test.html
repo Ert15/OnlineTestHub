@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ test['title'] }}</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>{{ test['title'] }}</h2>
+    <p>{{ test['description'] }}</p>
+    <form method="POST" action="/take_test">
+      {% for question in test['questions'] %}
+      <div>
+        <h3>{{ loop.index }}. {{ question['question_text'] }}</h3>
+        {% for option in question['options'] %}
+        <input type="radio" name="answer_{{ loop.index }}" value="{{ option }}" required>
+        <label>{{ option }}</label><br>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <br>
+      <button type="submit" class="btn-main">Submit Test</button>
+    </form>
+  </div>
+</body>
+
+</html>

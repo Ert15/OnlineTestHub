@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+    <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .btn-main:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>Registration Page</h2>
+<form method="POST">
+    <label>Полное имя:</label><br>
+    <input type="text" name="fullname" placeholder="Иван Иванов" pattern="[A-Za-zА-Яа-яЁё\s]+" title="Имя не должно содержать цифр" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Пароль:</label><br>
+    <input type="password" name="password" required><br><br>
+    <label for="role">Выберите роль:</label>
+    <select name="role" id="role">
+      <option value="Student">Студент</option>
+     <option value="Teacher">Преподаватель</option>
+     <option value="Admin">Администратор</option>
+    </select>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+
+</body>
+</html>

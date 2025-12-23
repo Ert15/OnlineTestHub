@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add User</title>
+</head>
+
+<body>
+  <h2>Add New User</h2>
+  <form method="POST">
+    <label>Full Name:</label><br>
+    <input type="text" name="fullname" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <label>Role:</label><br>
+    <select name="role" required>
+      <option value="admin">Admin</option>
+      <option value="teacher">Teacher</option>
+      <option value="student">Student</option>
+    </select><br><br>
+
+    <button type="submit">Add User</button>
+  </form>
+</body>
+
+</html>

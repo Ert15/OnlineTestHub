@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create Test</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    label,
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Create New Test</h2>
+    <form method="POST">
+      <div class="form-group">
+        <label for="test_title">Test Title:</label>
+        <input type="text" id="test_title" name="test_title" required><br><br>
+      </div>
+
+      <div class="form-group">
+        <label for="test_description">Test Description:</label>
+        <textarea id="test_description" name="test_description" rows="4" required></textarea><br><br>
+      </div>
+
+      <h3>Add Questions</h3>
+      <div class="form-group">
+        <label for="question_text">Question Text:</label>
+        <textarea id="question_text" name="question_text" rows="4" required></textarea><br><br>
+
+        <label for="question_type">Question Type:</label>
+        <select id="question_type" name="question_type" required>
+          <option value="MCQ">Multiple Choice</option>
+          <option value="SA">Short Answer</option>
+        </select><br><br>
+
+        <!-- Options for Multiple Choice -->
+        <div id="options-container">
+          <label for="option_1">Option 1:</label>
+          <input type="text" name="option_1" required><br><br>
+
+          <label for="option_2">Option 2:</label>
+          <input type="text" name="option_2" required><br><br>
+
+          <label for="option_3">Option 3:</label>
+          <input type="text" name="option_3" required><br><br>
+
+          <label for="option_4">Option 4:</label>
+          <input type="text" name="option_4" required><br><br>
+        </div>
+        <button type="button" id="add-option">Add More Options</button><br><br>
+
+        <!-- Correct Answer -->
+        <label for="correct_answer">Correct Answer (e.g. Option 1, Option 2, etc.):</label>
+        <input type="text" name="correct_answer" required><br><br>
+
+      </div>
+      <button type="submit" class="btn-main">Create Test</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('add-option').addEventListener('click', function () {
+      let optionNumber = document.querySelectorAll('#options-container input').length + 1;
+      let newOption = document.createElement('div');
+      newOption.innerHTML = `<label for="option_${optionNumber}">Option ${optionNumber}:</label><input type="text" name="option_${optionNumber}" required><br><br>`;
+      document.getElementById('options-container').appendChild(newOption);
+    });
+  </script>
+</body>
+
+</html>

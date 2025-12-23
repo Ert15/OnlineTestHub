@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #2a2a3c;
+      color: white;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #4CAF50;
+      border-radius: 5px;
+    }
+
+    .content {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .panel-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th,
+    table td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-main:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+    }
+
+    .btn-delete:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+    </div>
+    <div>
+      <a href="/logout" class="btn-main">Logout</a>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="panel-container">
+      <h2>Welcome, {{ session['user']['fullname'] }} (Student)</h2>
+      <h3>Available Tests</h3>
+      <table>
+        <tr>
+          <th>Test Title</th>
+          <th>Description</th>
+          <th>Actions</th>
+          <th>Results</th>
+        </tr>
+        {% for test in tests %}
+        <tr>
+          <td>{{ test[1] }}</td>
+          <td>{{ test[2] }}</td>
+          <td>
+            {% if test[0] not in test_results %}
+            <a href="/take_test">Начать тест</a>
+
+            {% else %}
+            <span>Completed</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if test[0] in test_results %}
+            <span>Score: {{ test_results[test[0]] }}</span>
+            {% else %}
+            <span>You haven't completed this test yet</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

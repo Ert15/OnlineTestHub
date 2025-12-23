@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Questions</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .btn-main {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Manage Questions</h2>
+
+    <h3>Add New Question</h3>
+    <form method="POST">
+      <label for="test_id">Select Test:</label>
+      <select name="test_id" required>
+        {% for test in tests %}
+        <option value="{{ test[0] }}">{{ test[1] }}</option>
+        {% endfor %}
+      </select><br><br>
+
+      <label for="question_text">Question:</label><br>
+      <textarea name="question_text" required></textarea><br><br>
+
+      <label for="question_type">Question Type:</label>
+      <select name="question_type" required>
+        <option value="MCQ">Multiple Choice</option>
+        <option value="SA">Short Answer</option>
+      </select><br><br>
+
+      <label for="options">Options (Separate by commas):</label><br>
+      <input type="text" name="options" required placeholder="Option 1, Option 2, Option 3, Option 4"><br><br>
+
+      <label for="correct_answer">Correct Answer:</label>
+      <input type="text" name="correct_answer" required><br><br>
+
+      <button type="submit" class="btn-main">Add Question</button>
+    </form>
+
+    <h3>Existing Questions</h3>
+    <table>
+      <tr>
+        <th>Question</th>
+        <th>Test</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+      {% for question in questions %}
+      <tr>
+        <td>{{ question[1] }}</td>
+        <td>{{ question[2] }}</td>
+        <td>{{ question[3] }}</td>
+        <td>
+          <a href="/delete_question/{{ question[0] }}" class="btn-main">Delete</a>
+          <a href="/edit_question/{{ question[0] }}" class="btn-main">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+
+</html>
